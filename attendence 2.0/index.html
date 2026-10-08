@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="card">
+        <div class="title-wrap">
+          <p class="eyebrow"></p>
+          <h1>Attendance Status</h1>
+        </div>
+
+        <form id="attendanceForm" novalidate>
+          <div id="startingTotals" class="setup-fields">
+            <div class="field">
+              <label for="totalClasses">Number of classes held</label>
+              <input id="totalClasses" type="number" min="0" step="1" placeholder="Enter total classes" required />
+            </div>
+
+            <div class="field">
+              <label for="presentClasses">Number of attended classes</label>
+              <input id="presentClasses" type="number" min="0" step="1" placeholder="Enter attended classes" required />
+            </div>
+
+            <button type="submit">Predict attendance</button>
+          </div>
+        </form>
+
+        <section id="tracker" hidden aria-live="polite">
+          <div class="summary" aria-live="polite">
+            <p class="summary-label">Current attendance</p>
+            <p id="percentage" class="percentage">0%</p>
+            <p id="summaryText" class="summary-text"></p>
+            <div class="progress-track" role="progressbar" aria-label="Attendance percentage" aria-valuemin="0" aria-valuemax="100">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <p id="classCount" class="class-count"></p>
+          </div>
+
+          <div id="result" class="result" aria-live="polite"></div>
+        </section>
+
+        <div id="emptyState" class="result" aria-live="polite">
+          <p>Enter your class totals to see your attendance percentage and how many consecutive classes you need to attend to reach 75%.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
